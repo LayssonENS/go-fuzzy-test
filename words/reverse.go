@@ -6,15 +6,13 @@ import (
 )
 
 func Reverse(s string) (string, error) {
-	var response string
-	r := []rune(s)
-
 	if !utf8.ValidString(s) {
 		return s, errors.New("invalid")
 	}
-	for i := len(r) - 1; i >= 0; i-- {
-		response = response + string(r[i])
+	b := []byte(s)
+	var response []byte
+	for i := len(b) - 1; i >= 0; i-- {
+		response = append(response, b[i])
 	}
-
-	return response, nil
+	return string(response), nil
 }

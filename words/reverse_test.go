@@ -45,3 +45,14 @@ func FuzzReverse(f *testing.F) {
 		}
 	})
 }
+
+var result string
+
+func BenchmarkReverse(b *testing.B) {
+	var c string
+	for n := 0; n < b.N; n++ {
+		c, _ = Reverse("laysson")
+	}
+
+	result = c
+}
